@@ -1,6 +1,7 @@
 #!/bin/bash
 #author: mp
 #comment: psuedo configure script to set up hidepid.c with desired pid
+#         eventually more options will be used to files and sockets
 PID=$1
 hidepid=0
 
